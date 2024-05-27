@@ -1,0 +1,7 @@
+dev_model:
+  catalog: ml_shovakeemian
+  schema: ml_ops_dabs
+  model_name: iris_model
+  model_alias: champion
+endpoint_name: shovakeemian_ml_ops_dabs
+prod_catalog: ml_shovakeemian

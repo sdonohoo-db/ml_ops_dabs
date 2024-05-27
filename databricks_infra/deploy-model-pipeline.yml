@@ -1,0 +1,48 @@
+new_cluster: &new_cluster
+  new_cluster:
+    num_workers: 0
+    spark_conf:
+      spark.databricks.cluster.profile: singleNode
+      spark.master: "local[*]"
+    spark_version: 14.3.x-cpu-ml-scala2.12
+    node_type_id: m5d.large
+    custom_tags:
+      clusterSource: mlops-stacks_0.3
+      ResourceClass: SingleNode
+    data_security_mode: SINGLE_USER
+    single_user_name: ${workspace.current_user.userName}
+
+common_permissions: &permissions
+  permissions:
+    - level: CAN_MANAGE_RUN
+      group_name: users
+
+shared_parameters: &shared_parameters
+  base_parameters:
+    config_path: workflow_configs/model_deployment.yaml
+    environment: ${var.environment}
+    # git source information of current ML resource deployment. It will be persisted as part of the workflow run
+    git_source_info: url:${bundle.git.origin_url}; branch:${bundle.git.branch}; commit:${bundle.git.commit}
+
+resources:
+  jobs:
+    deploy_model_pipeline:
+      name: ${bundle.target}_deploy_model_pipeline
+      job_clusters:
+        - job_cluster_key: model_deployment_job_cluster
+          <<: *new_cluster
+      tasks:
+        - task_key: transition_model
+          job_cluster_key: model_deployment_job_cluster
+          notebook_task:
+            notebook_path: ../model_deployment.py
+            <<: *shared_parameters
+        - task_key: create_ml_endpoint
+          job_cluster_key: model_deployment_job_cluster
+          depends_on:
+            - task_key: transition_model
+          notebook_task:
+            notebook_path: create_serving_endpoint.py
+            <<: *shared_parameters
+
+      <<: *permissions
