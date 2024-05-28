@@ -41,7 +41,7 @@ resources:
           depends_on:
             - task_key: transition_model
           notebook_task:
-            notebook_path: create_serving_endpoint.py
+            notebook_path: ../create_serving_endpoint.py
             <<: *shared_parameters
 
       <<: *permissions
