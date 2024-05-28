@@ -1,0 +1,19 @@
+# The name of the bundle. run `databricks bundle schema` to see the full bundle settings schema.
+bundle:
+  name: demo_dabs
+
+include:
+  # Resources folder contains ML artifact resources for the ML project that defines model and experiment
+  # And workflows resources for the ML project
+  - ./databricks_infra/*.yml
+
+variables:
+  environment:
+    description: Name of the environment we're running in
+
+# Deployment Target specific values for workspace
+targets:
+  e2-field-eng:  
+    default: true
+    workspace:
+      host: https://e2-demo-field-eng.cloud.databricks.com/
