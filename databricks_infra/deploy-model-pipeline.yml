@@ -38,8 +38,8 @@ resources:
         #     <<: *shared_parameters
         - task_key: create_ml_endpoint
           job_cluster_key: model_deployment_job_cluster
-          depends_on:
-            - task_key: transition_model
+          # depends_on:
+          #   - task_key: transition_model
           notebook_task:
             notebook_path: ../create_serving_endpoint.py
             <<: *shared_parameters
