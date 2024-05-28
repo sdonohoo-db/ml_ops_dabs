@@ -2,7 +2,7 @@
 from pprint import pprint
 
 from config import DeployModelConfig, ServingEndpointPermissions
-from serving.create_endpoint import create_endpoint, ModelServingConfig
+from serving.create_endpoint import create_or_update_endpoint, ModelServingConfig
 
 # COMMAND ----------
 
@@ -40,9 +40,5 @@ serving_cfg
 
 # COMMAND ----------
 
-endpoint_info = create_endpoint(serving_cfg, perms_cfg)
+endpoint_info = create_or_update_endpoint(serving_cfg, perms_cfg)
 pprint(endpoint_info)
-
-# COMMAND ----------
-
-
