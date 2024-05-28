@@ -1,0 +1,44 @@
+name: Dev Databricks Infra CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'ai_newsroom/**'
+      - 'databricks_infra/*'
+  push:
+    branches:
+      - main
+    paths:
+      - 'ai_newsroom/**'
+      - 'databricks_infra/*'
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./ai_newsroom/
+
+jobs:
+  cicd:
+    name: Dev Databricks Infra CI/CD
+    environment: dev
+    env:
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      DATABRICKS_BUNDLE_TARGET: dev
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: databricks/setup-cli@main
+      - name: Validate Bundle for Dev
+        id: validate
+        run: |
+          databricks bundle validate --var="pause_status=UNPAUSED"
+          databricks bundle validate --var="pause_status=UNPAUSED" -o json
+      - name: Deploy Bundle to Dev
+        id: deploy
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          databricks bundle deploy --var="pause_status=UNPAUSED"
