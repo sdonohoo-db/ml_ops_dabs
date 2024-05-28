@@ -4,13 +4,10 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - 'databricks_infra/*'
+
   push:
     branches:
       - main
-    paths:
-      - 'databricks_infra/*'
 
 defaults:
   run:
