@@ -26,4 +26,4 @@ with mlflow.start_run():
 
 # COMMAND ----------
 
-print('testing a merge. Checking if this push works. testing....')
+print('testing merge of dev into main....')
