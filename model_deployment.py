@@ -18,9 +18,9 @@ from config import DeployModelConfig
 # COMMAND ----------
 
 dbutils.widgets.text("config_path", "workflow_configs/model_deployment.yaml")
-dbutils.widgets.text("environment", "dev")
+# dbutils.widgets.text("environment", "dev")
 config_path = dbutils.widgets.get("config_path")
-environment = dbutils.widgets.get("environment")
+# environment = dbutils.widgets.get("environment")
 
 cfg = DeployModelConfig.from_yaml(config_path)
 cfg
@@ -42,6 +42,7 @@ def copy_and_alias_model(src_uri: str, dest_path: str, dest_alias: str):
 # COMMAND ----------
 
 predecessor_envs = {"prod": "dev"}
+environment='dev'
 if environment != "dev":
     src = getattr(cfg, f"{predecessor_envs[environment]}_model")
     dest = getattr(cfg, f"{environment}_model")

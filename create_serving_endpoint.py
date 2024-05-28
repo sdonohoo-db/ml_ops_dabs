@@ -8,10 +8,11 @@ from serving.create_endpoint import create_endpoint, ModelServingConfig
 
 dbutils.widgets.text("config_path", "workflow_configs/model_deployment.yaml")
 dbutils.widgets.text("perms_config_path", "workflow_configs/endpoint_perms.yaml")
-dbutils.widgets.text("environment", "dev")
+# dbutils.widgets.text("environment", "dev")
 config_path = dbutils.widgets.get("config_path")
 perms_config_path = dbutils.widgets.get("perms_config_path")
-environment = dbutils.widgets.get("environment")
+# environment = dbutils.widgets.get("environment")
+environment='dev'
 
 # COMMAND ----------
 
