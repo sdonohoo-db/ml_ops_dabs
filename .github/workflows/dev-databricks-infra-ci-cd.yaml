@@ -20,18 +20,18 @@ jobs:
     env:
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-      DATABRICKS_BUNDLE_TARGET: dev
+      DATABRICKS_BUNDLE_TARGET: e2-demo-field-eng
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: databricks/setup-cli@main
-      - name: Validate Bundle for Dev
+      - name: Validate Bundle
         id: validate
         run: |
           databricks bundle validate 
-      - name: Deploy Bundle to Dev
+      - name: Deploy Bundle
         id: deploy
         if: ${{ github.event_name == 'push' }}
         run: |
