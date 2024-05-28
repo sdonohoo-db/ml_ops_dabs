@@ -5,13 +5,11 @@ on:
     branches:
       - main
     paths:
-      - '/**'
       - 'databricks_infra/*'
   push:
     branches:
       - main
     paths:
-      - '/**'
       - 'databricks_infra/*'
 
 defaults:
@@ -24,6 +22,7 @@ jobs:
     name: Dev Databricks Infra CI/CD
     environment: dev
     env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
       DATABRICKS_BUNDLE_TARGET: dev
     runs-on: ubuntu-latest
