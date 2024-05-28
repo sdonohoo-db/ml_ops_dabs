@@ -1,7 +1,6 @@
 name: Run code tests
 on:
   push
-  
 jobs:
   test:
     if: false
