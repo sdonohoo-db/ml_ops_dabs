@@ -20,7 +20,7 @@ jobs:
     env:
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-      DATABRICKS_BUNDLE_TARGET: e2-demo-field-eng
+      DATABRICKS_BUNDLE_TARGET: e2-field-eng
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
