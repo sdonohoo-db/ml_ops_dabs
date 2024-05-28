@@ -30,10 +30,9 @@ jobs:
       - name: Validate Bundle for Dev
         id: validate
         run: |
-          databricks bundle validate --var="pause_status=UNPAUSED"
-          databricks bundle validate --var="pause_status=UNPAUSED" -o json
+          databricks bundle validate 
       - name: Deploy Bundle to Dev
         id: deploy
         if: ${{ github.event_name == 'push' }}
         run: |
-          databricks bundle deploy --var="pause_status=UNPAUSED"
+          databricks bundle deploy
