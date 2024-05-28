@@ -5,19 +5,19 @@ on:
     branches:
       - main
     paths:
-      - 'ai_newsroom/**'
+      - '/**'
       - 'databricks_infra/*'
   push:
     branches:
       - main
     paths:
-      - 'ai_newsroom/**'
+      - '/**'
       - 'databricks_infra/*'
 
 defaults:
   run:
     shell: bash
-    working-directory: ./ai_newsroom/
+    working-directory: ./
 
 jobs:
   cicd:
