@@ -3,11 +3,11 @@ name: Prod Databricks Infra CI/CD
 on:
   pull_request:
     branches:
-      - prod
+      - main
       
   push:
     branches:
-      - prod
+      - main
     paths:
       - 'notebooks/*'
 
