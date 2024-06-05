@@ -193,30 +193,11 @@ class UCModel(BaseConfig):
 
 @dataclass
 class DeployModelConfig(BaseConfig):
-    dev_model: UCModel
     endpoint_name: str
-    prod_catalog: str
-    prod_alias: str = "champion"
+    dev_model: UCModel
+    prod_model: UCModel   
 
-    @property
-    def staging_model(self):
-        return replace(
-            self.dev_model,
-            catalog=self.staging_catalog,
-            model_version=None,
-            model_alias=self.staging_alias,
-        )
-
-    @property
-    def prod_model(self):
-        return replace(
-            self.dev_model,
-            catalog=self.prod_catalog,
-            model_version=None,
-            model_alias=self.prod_alias,
-        )
-
-
+                
 # perms
 
 

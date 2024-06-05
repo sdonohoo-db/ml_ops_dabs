@@ -21,7 +21,7 @@ with mlflow.start_run():
         artifact_path="model",
         # The signature is automatically inferred from the input example and its predicted output.
         input_example=input_example,
-        registered_model_name="ml_shovakeemian.ml_ops_dabs.iris_model",
+        registered_model_name="shovakeemian_dev.ml_ops_dabs.iris_model",
     )
 
 # COMMAND ----------
