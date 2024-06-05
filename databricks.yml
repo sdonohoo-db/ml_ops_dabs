@@ -9,14 +9,14 @@ include:
 
 # Deployment Target specific values for workspace
 targets:
-  dev:  
+  dev-workspace:  
     default: true
     workspace:
       host: https://e2-demo-field-eng.cloud.databricks.com/
     variables:
       environment: dev
 
-  prod:
+  prod-workspace:
     workspace:
       host: https://e2-demo-field-eng.cloud.databricks.com/
     variables:
