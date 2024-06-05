@@ -1,0 +1,41 @@
+name: Prod Databricks Infra CI/CD
+
+on:
+  pull_request:
+    branches:
+      - prod
+      
+  push:
+    branches:
+      - prod
+    paths:
+      - 'notebooks/*'
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./
+
+jobs:
+  cicd:
+    name: Prod Databricks Infra CI/CD
+    environment: prod
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      DATABRICKS_BUNDLE_TARGET: prod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: databricks/setup-cli@main
+      - name: Validate Bundle for Prod
+        id: validate
+        run: |
+          databricks bundle validate
+      - name: Deploy Bundle
+        id: deploy
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          databricks bundle deploy
