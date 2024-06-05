@@ -1,13 +1,12 @@
 name: Dev Databricks Infra CI/CD
 
 on:
-  # pull_request:
-  #   branches:
-  #     - main
+  pull_request:
+    branches:
+      - dev
 
   push:
     branches:
-      # - main
       - dev
 
 defaults:
@@ -18,11 +17,11 @@ defaults:
 jobs:
   cicd:
     name: Dev Databricks Infra CI/CD
-    environment: dev ######
+    environment: dev 
     env:
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-      DATABRICKS_BUNDLE_TARGET: e2-field-eng
+      DATABRICKS_BUNDLE_TARGET: dev
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
