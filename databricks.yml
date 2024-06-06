@@ -7,6 +7,10 @@ include:
   # And workflows resources for the ML project
   - ./databricks_infra/*.yml
 
+variables:
+  environment:
+    description: Name of the environment we're running in
+
 # Deployment Target specific values for workspace
 targets:
   dev-workspace:  
