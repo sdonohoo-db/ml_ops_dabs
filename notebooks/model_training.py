@@ -4,9 +4,13 @@
 
 # COMMAND ----------
 
+import mlflow
+mlflow.set_registry_uri("databricks-uc")
+
+# COMMAND ----------
+
 from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
-import mlflow
 
 with mlflow.start_run():
     # Train a sklearn model on the iris dataset
@@ -27,3 +31,7 @@ with mlflow.start_run():
 # COMMAND ----------
 
 print('Lets test a merge....')
+
+# COMMAND ----------
+
+
