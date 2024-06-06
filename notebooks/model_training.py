@@ -30,7 +30,7 @@ with mlflow.start_run():
 
 # COMMAND ----------
 
-print('upgrading to version 4, Lets test a merge again....')
+print('upgrading to version 6, Lets test a merge again....')
 
 # COMMAND ----------
 
