@@ -66,12 +66,12 @@ def create_endpoint(
     data = {
         "name": cfg.endpoint_name,
         "config": {
-            "served_entities": [cfg.get_entity_config()],
-            "auto_capture_config": {
-                "catalog_name": cfg.catalog,
-                "schema_name": cfg.schema,
-                "table_name_prefix": cfg.inference_table_prefix,
-            },
+            "served_entities": [cfg.get_entity_config()]
+            # ,"auto_capture_config": {
+            #     "catalog_name": cfg.catalog,
+            #     "schema_name": cfg.schema,
+            #     "table_name_prefix": cfg.inference_table_prefix,
+            # },
         },
     }
     headers = {"Context-Type": "text/json", "Authorization": f"Bearer {cfg.api_token}"}
