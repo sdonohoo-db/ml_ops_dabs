@@ -35,7 +35,7 @@ resources:
         - task_key: transition_model
           job_cluster_key: model_deployment_job_cluster
           notebook_task:
-            notebook_path: ../model_deployment.py
+            notebook_path: ../notebooks/model_deployment.py
             <<: *shared_parameters
         - task_key: create_ml_endpoint
           job_cluster_key: model_deployment_job_cluster
