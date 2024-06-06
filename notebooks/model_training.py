@@ -30,7 +30,7 @@ with mlflow.start_run():
 
 # COMMAND ----------
 
-print('Adding something new, Lets test a merge....')
+print('Adding new new, Lets test a merge....')
 
 # COMMAND ----------
 
