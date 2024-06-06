@@ -8,11 +8,10 @@ from serving.create_endpoint import create_or_update_endpoint, ModelServingConfi
 
 dbutils.widgets.text("config_path", "workflow_configs/model_deployment.yaml")
 dbutils.widgets.text("perms_config_path", "workflow_configs/endpoint_perms.yaml")
-# dbutils.widgets.text("environment", "dev")
+dbutils.widgets.text("environment", "dev")
 config_path = dbutils.widgets.get("config_path")
 perms_config_path = dbutils.widgets.get("perms_config_path")
-# environment = dbutils.widgets.get("environment")
-environment='dev'
+environment = dbutils.widgets.get("environment")
 
 # COMMAND ----------
 
@@ -27,7 +26,7 @@ perms_cfg
 # COMMAND ----------
 
 model = getattr(cfg, f"{environment}_model")
-scale_to_zero_enabled = False if environment == "prod" else True
+scale_to_zero_enabled = False #if environment == "prod" else True
 serving_cfg = ModelServingConfig(
     endpoint_name=cfg.endpoint_name,
     registered_model_name=model.path,
