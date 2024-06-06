@@ -17,7 +17,7 @@ from config import DeployModelConfig
 
 # COMMAND ----------
 
-dbutils.widgets.text("config_path", "../workflow_configs/model_deployment.yaml")
+dbutils.widgets.text("config_path", "./workflow_configs/model_deployment.yaml")
 dbutils.widgets.text("environment", "dev")
 config_path = dbutils.widgets.get("config_path")
 environment = dbutils.widgets.get("environment")
