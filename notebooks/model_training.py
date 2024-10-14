@@ -30,7 +30,7 @@ with mlflow.start_run():
 
 # COMMAND ----------
 
-print('updating to version7, again')
+print('updating to version8, again')
 
 # COMMAND ----------
 
