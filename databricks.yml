@@ -16,12 +16,12 @@ targets:
   dev-workspace:  
     default: true
     workspace:
-      host: https://e2-demo-west.cloud.databricks.com/
+      host: https://adb-984752964297111.11.azuredatabricks.net/
     variables:
       environment: dev
 
   prod-workspace:
     workspace:
-      host: https://e2-demo-west.cloud.databricks.com/
+      host: https://adb-984752964297111.11.azuredatabricks.net/
     variables:
       environment: prod

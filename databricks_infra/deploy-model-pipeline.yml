@@ -4,8 +4,8 @@ new_cluster: &new_cluster
     spark_conf:
       spark.databricks.cluster.profile: singleNode
       spark.master: "local[*]"
-    spark_version: 14.3.x-cpu-ml-scala2.12
-    node_type_id: m5d.large
+    spark_version: 15.4.x-cpu-ml-scala2.12
+    node_type_id: Standard_D4ds_v5
     custom_tags:
       clusterSource: mlops-stacks_0.3
       ResourceClass: SingleNode

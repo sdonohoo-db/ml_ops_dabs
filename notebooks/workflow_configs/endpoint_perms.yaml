@@ -1,5 +1,5 @@
 permissions:
   - group_name: users
     permission_level: CAN_QUERY
-  - group_name: sara_test_group
+  - group_name: scott_test_group
     permission_level: CAN_MANAGE
